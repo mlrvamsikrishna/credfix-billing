@@ -9,6 +9,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Prices each resource independently using a constant rate from configuration.
+ */
 public class FlatPerUnitPricingStrategy implements PricingStrategy {
     @Override
     public String billingType() {

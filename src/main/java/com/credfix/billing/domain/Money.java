@@ -17,19 +17,31 @@ public final class Money {
         this.amount = amount.setScale(SCALE, RoundingMode.HALF_UP);
     }
 
+    /**
+     * Creates money from a decimal amount and normalizes to internal scale.
+     */
     public static Money of(BigDecimal amount) {
         Objects.requireNonNull(amount, "amount is required");
         return new Money(amount);
     }
 
+    /**
+     * Convenience factory for test/demo literals.
+     */
     public static Money of(String amount) {
         return of(new BigDecimal(amount));
     }
 
+    /**
+     * Adds two money values.
+     */
     public Money plus(Money other) {
         return new Money(this.amount.add(other.amount));
     }
 
+    /**
+     * Multiplies money by a scalar.
+     */
     public Money multiply(BigDecimal factor) {
         return new Money(this.amount.multiply(factor));
     }

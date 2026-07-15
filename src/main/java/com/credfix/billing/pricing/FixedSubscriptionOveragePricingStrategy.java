@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Applies a fixed monthly fee, then charges only usage above included quantity.
+ */
 public class FixedSubscriptionOveragePricingStrategy implements PricingStrategy {
     @Override
     public String billingType() {

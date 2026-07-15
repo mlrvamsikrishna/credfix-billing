@@ -20,6 +20,9 @@ public class PricingEngine {
         this.strategies = loadStrategies();
     }
 
+    /**
+     * Delegates pricing to the strategy mapped by plan.billingType().
+     */
     public List<InvoiceLineItem> price(String userId, ServicePlan plan, Map<String, BigDecimal> usageByResource) {
         PricingStrategy strategy = strategies.get(plan.billingType());
         if (strategy == null) {

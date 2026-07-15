@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Objects;
 
+/**
+ * Immutable usage fact for a (user, resource, service) at a point in time.
+ */
 public record UsageEvent(
         String userId,
         String resourceId,

@@ -14,7 +14,13 @@ import com.credfix.billing.store.UsageStore;
 import java.math.BigDecimal;
 import java.time.Instant;
 
+/**
+ * Minimal runnable driver that wires components, seeds sample usage, and prints one invoice.
+ */
 public class BillingApplication {
+    /**
+     * Demonstrates invoice generation for a single billing period.
+     */
     public static void main(String[] args) {
         PricingCatalog pricingCatalog = new ConfigPricingCatalog("/billing-config.properties");
         UsageStore usageStore = new InMemoryUsageStore();
@@ -33,6 +39,9 @@ public class BillingApplication {
         System.out.println(formatter.format(aliceInvoice));
     }
 
+    /**
+     * Seeds two users and three required billing models.
+     */
     private static void seedUsageEvents(UsageIngestionService ingestionService) {
         // Alice events (intentionally out of order to show order-independence)
         ingestionService.ingest(usage("alice", "api-gw-2", "api", "500000", "CALL", "2026-01-28T11:00:00Z"));

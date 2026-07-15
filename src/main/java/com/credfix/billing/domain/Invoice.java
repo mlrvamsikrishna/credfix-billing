@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Immutable invoice aggregate containing line items, per-service subtotals, and grand total.
+ */
 public final class Invoice {
     private final String userId;
     private final Instant periodStart;
@@ -22,6 +25,7 @@ public final class Invoice {
         this.periodEnd = Objects.requireNonNull(periodEnd, "periodEnd is required");
 
         List<InvoiceLineItem> sorted = new ArrayList<>(Objects.requireNonNull(lineItems, "lineItems is required"));
+        // Stable ordering helps deterministic output and reproducible tests.
         sorted.sort(Comparator.comparing(InvoiceLineItem::serviceType).thenComparing(InvoiceLineItem::resourceId));
         this.lineItems = List.copyOf(sorted);
 

@@ -17,6 +17,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Orchestrates invoice generation: fetch usage, aggregate, delegate pricing, then build invoice.
+ */
 public class InvoiceService {
     private final UsageStore usageStore;
     private final PricingCatalog pricingCatalog;
@@ -28,6 +31,9 @@ public class InvoiceService {
         this.pricingEngine = pricingEngine;
     }
 
+    /**
+     * Generates one invoice for a user within [startInclusive, endExclusive).
+     */
     public Invoice generateInvoice(String userId, Instant startInclusive, Instant endExclusive) {
         BillingPeriod period = new BillingPeriod(startInclusive, endExclusive);
         List<UsageEvent> events = usageStore.findByUserAndPeriod(userId, period);

@@ -3,6 +3,9 @@ package com.credfix.billing.domain;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+/**
+ * Final priced line shown in an invoice, scoped to one service/resource bucket.
+ */
 public record InvoiceLineItem(
         String userId,
         String serviceType,

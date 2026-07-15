@@ -10,10 +10,16 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
+/**
+ * Renders an invoice as plain text for demo output and quick manual validation.
+ */
 public class InvoiceFormatter {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE
             .withZone(ZoneOffset.UTC);
 
+    /**
+     * Produces a human-readable invoice table with subtotals and total.
+     */
     public String format(Invoice invoice) {
         StringBuilder out = new StringBuilder();
         out.append("Invoice for user=").append(invoice.userId()).append('\n');

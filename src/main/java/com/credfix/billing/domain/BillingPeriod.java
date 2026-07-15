@@ -3,6 +3,9 @@ package com.credfix.billing.domain;
 import java.time.Instant;
 import java.util.Objects;
 
+/**
+ * Billing interval represented as [startInclusive, endExclusive).
+ */
 public record BillingPeriod(Instant startInclusive, Instant endExclusive) {
     public BillingPeriod {
         Objects.requireNonNull(startInclusive, "startInclusive is required");
@@ -12,6 +15,9 @@ public record BillingPeriod(Instant startInclusive, Instant endExclusive) {
         }
     }
 
+    /**
+     * True when timestamp is within [startInclusive, endExclusive).
+     */
     public boolean contains(Instant timestamp) {
         return !timestamp.isBefore(startInclusive) && timestamp.isBefore(endExclusive);
     }
