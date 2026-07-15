@@ -1,0 +1,6 @@
+com.credfix.billing.pricing.FlatPerUnitPricingStrategy
+com.credfix.billing.pricing.TieredPricingStrategy
+com.credfix.billing.pricing.FixedSubscriptionOveragePricingStrategy
+com.credfix.billing.pricing.GraduatedWithCapPricingStrategy
+
+
